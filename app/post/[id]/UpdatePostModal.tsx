@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
+// Define the interface for the props expected by the component
 interface UpdatePostModalProps {
   id: string;
   name: string;
@@ -14,6 +15,7 @@ const UpdatePostModal: React.FC<UpdatePostModalProps> = ({ id, name, description
   const [newDescription, setNewDescription] = useState(description);
   const router = useRouter();
 
+  // Function to handle the form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -34,14 +36,16 @@ const UpdatePostModal: React.FC<UpdatePostModalProps> = ({ id, name, description
   };
 
   return (
-    <div className="modal">
-      <form onSubmit={handleSubmit} className="">
-        <span className="close" onClick={closeModal}>&times;</span>
-        <h2>Update Post</h2>
-        <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder='Post Title'/>
-        <textarea value={newDescription} onChange={(e) => setNewDescription(e.target.value)} placeholder='Post Description'/>
-        <button type='submit'>Save</button>
-      </form>
+    <div className="fixed w-screen h-screen bg-gray-700 bg-opacity-50 flex flex-col items-center justify-center z-100">
+      <div className="relative flex flex-col items-center justify-start bg-green-200 p-10 rounded-[15px]">
+        <span className="absolute top-0 right-0 mx-5 my-3 bg-red-500 px-2 py-0 rounded-full hover:cursor-pointer" onClick={closeModal}>&times;</span>
+        <form onSubmit={handleSubmit} className="flex flex-col">
+          <h2 className="text-[15px] font-semibold my-3">Update Post</h2>
+          <input className='my-2 rounded-[5px] p-1' type="text" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder='Post Title'/>
+          <textarea className='my-2 rounded-[5px] p-1' value={newDescription} onChange={(e) => setNewDescription(e.target.value)} placeholder='Post Description'/>
+          <button className='bg-blue-600 my-3 py-1 rounded-[10px] text-white hover:bg-blue-100 hover:text-blue-700 border-[1px] border-blue-700' type='submit'>Save</button>
+        </form>
+      </div>
     </div>
   );
 };
