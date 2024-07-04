@@ -53,15 +53,15 @@ const PostsPage:React.FC = () => {
         <h1 className="text-[18px] sm:text-[20px] md:text-[25px] font-bold p-[30px] mr-[50px]">Blog Post Management Application</h1>
         <button className='fixed top-0 font-semibold right-0 mt-[30px] mx-2 sm:mx-3 bg-green-700 px-[10px] sm:px-[20px] py-[10px] text-[12px] rounded-[25px] text-white hover:bg-green-500 hover:text-green-800' onClick={openModal}>+ Add New</button>
       </div>
-      <div className='flex flex-col items-center mt-[100px] bg-green-100 bg-opacity-50 w-screen h-auto min-h-full py-5 border-b-[5px] border-green-700'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row gap-4'>
+      <div className='flex flex-col items-center pt-[120px] bg-green-100 bg-opacity-50 w-screen h-auto min-h-full border-b-[5px] border-green-700'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row gap-4 overflow-x-hidden overflow-y-scroll  no-scrollbar'>
             {posts.map((p) => (
               <div key={p._id} className='bg-gray-100 shadow-md shadow-green-700 rounded-[5px] m-3 w-[285px] flex flex-col items-center justify-between p-3'>
                 <div className='flex flex-col w-full items-center justify-start'>
                   <h2 className="text-[20px] font-bold text-green-700">{p.name}</h2>
                   <div className='h-[5px] bg-green-700 w-[10%] rounded-full'></div>
                 </div>
-                <p className='text-[14px] font-medium py-[5px] w-full text-justify'>{p.description}</p>
+                <p className='text-[14px] font-medium py-[5px] w-full text-justify max-h-[150px] overflow-y-scroll no-scrollbar'>{p.description}</p>
                 <div className='flex flex-col items-center justify-start'>
                   <p className='text-[10px] pt-[10px] w-full'>Created at: {p.createdAt}</p>
                   <p className='text-[10px] text-green-600 w-full'>Updated at: {p.updatedAt}</p>
